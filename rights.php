@@ -1,5 +1,5 @@
 <html>
-<head><title>Projects</title></head>
+<head><title>Rights logs</title></head>
 <body>
 This will be a new rights tool.
 </body>
