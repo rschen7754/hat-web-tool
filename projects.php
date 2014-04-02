@@ -1,13 +1,18 @@
 <html>
 <head><title>Projects</title>
-<link rel="stylesheet" href="//bits.wikimedia.org/en.wikipedia.org/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=styles&amp;skin=vector&amp;*" />
+<script type="text/javascript" src="jquery-latest.js"></script> 
+<script type="text/javascript" src="jquery.tablesorter.js"></script> 
 </head>
 <body>
 This will be a replacement for erwin85's projects tool.
 
 <br /><br />
 <table>
+<thead>
 <tr><th>Wiki</th><th>Admin</th><th>Crat</th><th>CU</th><th>OS</th></tr>
+</thead>
+<tbody>
+</tbody>
 </table>
 </body>
 </html>
