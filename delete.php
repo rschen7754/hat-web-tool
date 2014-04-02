@@ -74,7 +74,9 @@ Number of admins (maximum 10): <input type="text" name="number" value="<?php $ad
 		
 		$row2 = mysql_fetch_row($result2);
 		
-		if ($row2[0] <= $admins) {
+		$numAdmins = ($row2[0]?$row2[0]:0);
+		
+		if ($numAdmins <= $admins) {
 		
 			$queryL = "SELECT user_name, log_timestamp FROM logging JOIN user ON user_id = log_user JOIN user_groups ON ug_user = user_id WHERE log_type IN ('delete', 'block', 'protect') AND ug_group = 'sysop' ORDER BY log_timestamp DESC LIMIT 1;";
 			$resultL = mysql_query($queryL);
@@ -109,7 +111,7 @@ Number of admins (maximum 10): <input type="text" name="number" value="<?php $ad
 			{
 				$rowD = mysql_fetch_row($result4);
 				echo "<tr><td><a href=\"" . $row[1] . "\">". $row[0] . "</a></td>";
-				echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/sysop\">".$row2[0]."</td>\n";
+				echo "<td>".$numAdmins."</td>\n";
 				echo "<td>".$rowL[1]."</td>\n";
 				echo "<td><a href=\"" . $row[1]. "/wiki/Special:Diff/".titleLink($rowD[4])."\">".$rowD[0]."</a></td>\n";
 				echo "<td><a href=\"" . $row[1]. "/wiki/User:".titleLink($rowD[2])."\">".$rowD[2]."</a></td>\n";
