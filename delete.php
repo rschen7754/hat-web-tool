@@ -73,7 +73,7 @@ This will be a replacement for erwin85's delete tool.<br />
 		
 		$rows4 = mysql_num_rows($result4);
 		
-		for ($j = 0; $j < $rows; ++$j)
+		for ($k = 0; $j < $rows4; ++$k)
 			{
 				$rowD = mysql_fetch_row($result4);
 				echo "<tr><td><a href=\"" . $row[1] . "\">". $row[0] . "</a></td>";
