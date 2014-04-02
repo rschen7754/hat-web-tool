@@ -43,39 +43,18 @@ This will be a replacement for erwin85's projects tool.
 	
 		mysql_select_db($row[0]."_p", $db_server_temp) or die ("Unable to select database: " . mysql_error());
 
-		$query2 = "select count(*) from user_groups where ug_group='sysop';";
+		$query2 = "SELECT sum(if(ug_group = 'sysop', 1, 0)), sum(if(ug_group = 'bureaucrat', 1, 0)), sum(if(ug_group = 'checkuser', 1, 0)), sum(if(ug_group = 'oversight', 1, 0)) FROM user_groups;";
 		$result2 = mysql_query($query2);
 	
 		if (!$result2) die ("Database access failed: " . mysql_error());
 		
-		$rowA = mysql_fetch_row($result2);
-		
-		$query3 = "select count(*) from user_groups where ug_group='bureaucrat';";
-		$result3 = mysql_query($query3);
-	
-		if (!$result3) die ("Database access failed: " . mysql_error());
-		
-		$rowB = mysql_fetch_row($result3);
-		
-		$query4 = "select count(*) from user_groups where ug_group='checkuser';";
-		$result4 = mysql_query($query4);
-	
-		if (!$result4) die ("Database access failed: " . mysql_error());
-		
-		$rowC = mysql_fetch_row($result4);
-		
-		$query5 = "select count(*) from user_groups where ug_group='oversight';";
-		$result5 = mysql_query($query5);
-	
-		if (!$result5) die ("Database access failed: " . mysql_error());
-		
-		$rowO = mysql_fetch_row($result5);
+		$row2 = mysql_fetch_row($result2);
 		
 		echo "<tr><td><a href=\"" . $row[1] . "\">". $row[0] . "</a></td>";
-		echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/sysop\">".$rowA[0]."</td>\n";
-		echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/bureaucrat\">".$rowB[0]."</td>\n";
-		echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/checkuser\">".$rowC[0]."</td>\n";
-		echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/oversight\">".$rowO[0]."</td></tr>\n";
+		echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/sysop\">".$row2[0]."</td>\n";
+		echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/bureaucrat\">".$row2[1]."</td>\n";
+		echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/checkuser\">".$row2[2]."</td>\n";
+		echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/oversight\">".$row2[3]."</td></tr>\n";
 	}
 	?>
 
