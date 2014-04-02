@@ -58,7 +58,7 @@ This will be a replacement for erwin85's delete tool.<br />
 		
 		$row2 = mysql_fetch_row($result2);
 		
-		if ($row2[0] <= 0) {
+		if ($row2[0] <= 1) {
 		
 		$query3 = "SELECT pl_title FROM pagelinks LEFT JOIN page ON page_id = pl_from WHERE page_title = 'Delete' AND page_namespace = 10 AND page_is_redirect = 1 LIMIT 1;";
 		$result3 = mysql_query($query3);

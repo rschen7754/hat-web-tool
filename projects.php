@@ -1,5 +1,6 @@
 <html>
 <head><title>Projects</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <style type="text/css">@import "blue/style.css";</style>
 <script type="text/javascript" src="jquery-latest.js"></script> 
 <script type="text/javascript" src="jquery.tablesorter.js"></script> 
