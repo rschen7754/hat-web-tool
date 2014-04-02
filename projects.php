@@ -50,7 +50,8 @@ This will be a replacement for erwin85's projects tool.
 		
 		$rowA = mysql_fetch_row($result2);
 		
-		echo "<tr><td><a href=\"" . $row[1] . "\">". $row[0] . "</a></td><td>". $rowA[0]."</tr>\n";
+		echo "<tr><td><a href=\"" . $row[1] . "\">". $row[0] . "</a></td>";
+		echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/sysop\">".$rowA[0]."</tr>\n";
 	}
 	?>
 
