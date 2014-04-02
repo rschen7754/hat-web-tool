@@ -17,7 +17,7 @@ function titleLink ($title)
 {
     return str_replace('%2F', '/', urlencode(str_replace(' ', '_', $title)));
 }
-
+function get_post($var) { return mysql_real_escape_string($_POST[$var]); }
 ?>
 <body>
 This will be a replacement for erwin85's delete tool.<br />
