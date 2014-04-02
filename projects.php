@@ -2,6 +2,12 @@
 <head><title>Projects</title>
 <script type="text/javascript" src="jquery-latest.js"></script> 
 <script type="text/javascript" src="jquery.tablesorter.js"></script> 
+
+$(document).ready(function() 
+    { 
+        $("#projects").tablesorter(); 
+    } 
+); 
 </head>
 <body>
 This will be a replacement for erwin85's projects tool.
