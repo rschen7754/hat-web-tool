@@ -66,7 +66,7 @@ This will be a replacement for erwin85's delete tool.<br />
             $template = "Delete";
         }
         
-        $query4 = "SELECT page_title, rev_timestamp, rev_user_text, rev_comment FROM page LEFT JOIN templatelinks ON tl_from = page_id LEFT JOIN revision ON rev_page = page_id WHERE tl_title = '" . $template . "' AND tl_namespace=10 AND rev_timestamp = (SELECT max(rev_timestamp) FROM revision AS r WHERE rev_page = page_id)";
+        $query4 = "SELECT page_title, rev_timestamp, rev_user_text, rev_comment, rev_id FROM page LEFT JOIN templatelinks ON tl_from = page_id LEFT JOIN revision ON rev_page = page_id WHERE tl_title = '" . $template . "' AND tl_namespace=10 AND rev_timestamp = (SELECT max(rev_timestamp) FROM revision AS r WHERE rev_page = page_id)";
 		$result4 = mysql_query($query4);
 	
 		if (!$result4) die ("Database access failed: " . mysql_error());
@@ -79,7 +79,7 @@ This will be a replacement for erwin85's delete tool.<br />
 				echo "<tr><td><a href=\"" . $row[1] . "\">". $row[0] . "</a></td>";
 				echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/sysop\">".$row2[0]."</td>\n";
 				echo "<td></td>";
-				echo "<td><a href=\"" . $row[1]. "/wiki/".$rowD[0]."\">".$rowD[0]."</a></td>\n";
+				echo "<td><a href=\"" . $row[1]. "/wiki/Special:Diff/".$rowD[4]."\">".$rowD[0]."</a></td>\n";
 				echo "<td><a href=\"" . $row[1]. "/wiki/User:".$rowD[2]."\">".$rowD[2]."</a></td>\n";
 				echo "<td>".$rowD[1]."</td>\n";
 				echo "<td>".$rowD[3]."</td>\n";
