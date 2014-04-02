@@ -32,6 +32,14 @@ This will be a replacement for erwin85's projects tool.
 	$result = mysql_query($query);
 	
 	if (!$result) die ("Database access failed: " . mysql_error());
+	
+	$rows = mysql_num_rows($result);
+
+	for ($j = 0; $j < $rows; ++$j)
+	{
+		$row = mysql_fetch_row($result);
+		echo "<tr><td>" . $row[0] . "</td><tr>\n";
+	}
 	?>
 
 </tbody>
