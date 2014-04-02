@@ -11,7 +11,8 @@ $(document).ready(function()
 ); 
 </script>
 <body>
-This will be a replacement for erwin85's delete tool.
+This will be a replacement for erwin85's delete tool.<br />
+<h1>WARNING: this is a beta tool. You are responsible for your own deletions; please check before you delete!</h1>
 
 <table id="projects" class="tablesorter">
 <thead>
@@ -48,6 +49,8 @@ This will be a replacement for erwin85's delete tool.
 		
 		$row2 = mysql_fetch_row($result2);
 		
+		if ($row2[0] <= 0) {
+		
 		$query3 = "SELECT pl_title FROM pagelinks LEFT JOIN page ON page_id = pl_from WHERE page_title = 'Delete' AND page_namespace = 10 AND page_is_redirect = 1 LIMIT 1;";
 		$result3 = mysql_query($query3);
 	
@@ -62,12 +65,22 @@ This will be a replacement for erwin85's delete tool.
         } else {
             $template = "Delete";
         }
+        
+        $query4 = "SELECT page_title, rev_timestamp, rev_user_text, rev_comment FROM page LEFT JOIN templatelinks ON tl_from = page_id LEFT JOIN revision ON rev_page = page_id WHERE tl_title = '" . $template . "' AND tl_namespace=10 AND rev_timestamp = (SELECT max(rev_timestamp) FROM revision AS r WHERE rev_page = page_id)";
+		$result4 = mysql_query($query4);
+	
+		if (!$result4) die ("Database access failed: " . mysql_error());
 		
-		if ($row2[0] <= 0) {
-			echo "<tr><td><a href=\"" . $row[1] . "\">". $row[0] . "</a></td>";
-			echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/sysop\">".$row2[0]."</td>\n";
-			echo "<td></td>";
-			echo "<td><a href=\"" . $row[1]. "/wiki/Template:".$template."\">".$template."</td>\n";
+		$rows4 = mysql_num_rows($result4);
+		
+		for ($j = 0; $j < $rows; ++$j)
+			{
+				$rowD = mysql_fetch_row($result4);
+				echo "<tr><td><a href=\"" . $row[1] . "\">". $row[0] . "</a></td>";
+				echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/sysop\">".$row2[0]."</td>\n";
+				echo "<td></td>";
+				echo "<td><a href=\"" . $row[1]. "/wiki/".$rowD."\">".$rowD."</td>\n";
+			}
 		}
 	}
 	?>
