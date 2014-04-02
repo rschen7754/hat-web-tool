@@ -12,8 +12,8 @@ This will be a replacement for erwin85's projects tool.
 <tr><th>Wiki</th><th>Admin</th><th>Crat</th><th>CU</th><th>OS</th></tr>
 </thead>
 <tbody>
-<tr><td>enwiki</td><td>0</td>td>0</td>td>5</td>td>0</td></tr>
-<tr><td>dewiki</td><td>1</td>td>0</td>td>3</td>td>0</td></tr>
+<tr><td>enwiki</td><td>0</td><td>0</td><td>5</td><td>0</td></tr>
+<tr><td>dewiki</td><td>1</td><td>0</td><td>3</td><td>0</td></tr>
 </tbody>
 </table>
 </body>
