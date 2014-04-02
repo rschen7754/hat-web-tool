@@ -19,6 +19,12 @@ function titleLink ($title)
 }
 function get_post($var) { return mysql_real_escape_string($_POST[$var]); }
 
+	require_once 'login.php';
+	
+	$db_server = mysql_connect("metawiki.labsdb", $db_username, $db_password);
+	if (!$db_server) die ("Unable to connect to MySQL: " . mysql_error());
+	
+	mysql_select_db("meta_p", $db_server) or die ("Unable to select database: " . mysql_error());
 	$admins = 0;
 	
 	if (isset($_POST['number'])) {
@@ -43,12 +49,7 @@ Number of admins (maximum 10): <input type="text" name="number" value="<?php $ad
 </thead>
 <tbody>
 	<?php
-	require_once 'login.php';
-	
-	$db_server = mysql_connect("metawiki.labsdb", $db_username, $db_password);
-	if (!$db_server) die ("Unable to connect to MySQL: " . mysql_error());
-	
-	mysql_select_db("meta_p", $db_server) or die ("Unable to select database: " . mysql_error());
+
 
 	$query = "SELECT dbname,REPLACE(url, 'http://', 'https://') AS domain, slice FROM wiki WHERE url IS NOT NULL AND is_closed=0;";
 	$result = mysql_query($query);
