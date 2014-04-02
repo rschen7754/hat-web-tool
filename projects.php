@@ -12,7 +12,7 @@ $(document).ready(function()
 </script>
 </head>
 <body>
-This will be a replacement for erwin85's projects tool.
+This is a replacement for erwin85's projects tool. For special rights, see <a href="http://tools.wmflabs.org/rightstool/cgi-bin/rightsstats">Dungodung's tool</a>.
 
 <br /><br />
 <table id="projects" class="tablesorter">
