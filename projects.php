@@ -7,7 +7,7 @@
 This will be a replacement for erwin85's projects tool.
 
 <br /><br />
-<table>
+<table id="projects" class="tablesorter">
 <thead>
 <tr><th>Wiki</th><th>Admin</th><th>Crat</th><th>CU</th><th>OS</th></tr>
 </thead>
