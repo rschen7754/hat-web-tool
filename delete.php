@@ -10,13 +10,21 @@ $(document).ready(function()
     } 
 ); 
 </script>
+<?php
+
+function titleLink ($title)
+{
+    return str_replace('%2F', '/', urlencode(str_replace(' ', '_', $title)));
+}
+
+?>
 <body>
 This will be a replacement for erwin85's delete tool.<br />
 <h1>WARNING: this is a beta tool. You are responsible for your own deletions; please check before you delete!</h1>
 
 <table id="projects" class="tablesorter">
 <thead>
-<tr><th>Wiki</th><th>Admins</th><th>Last action</th><th>Page name</th><th>Last author</th><th>Last revision</th><th>Edit summary</th></tr>
+<tr><th>Wiki</th><th>Admins</th><th>Last admin action</th><th>Page name</th><th>Last author</th><th>Last revision</th><th>Edit summary</th></tr>
 </thead>
 <tbody>
 	<?php
@@ -79,7 +87,7 @@ This will be a replacement for erwin85's delete tool.<br />
 				echo "<tr><td><a href=\"" . $row[1] . "\">". $row[0] . "</a></td>";
 				echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/sysop\">".$row2[0]."</td>\n";
 				echo "<td></td>";
-				echo "<td><a href=\"" . $row[1]. "/wiki/Special:Diff/".$rowD[4]."\">".$rowD[0]."</a></td>\n";
+				echo "<td><a href=\"" . $row[1]. "/wiki/Special:Diff/".titleLink($rowD[4])."\">".$rowD[0]."</a></td>\n";
 				echo "<td><a href=\"" . $row[1]. "/wiki/User:".$rowD[2]."\">".$rowD[2]."</a></td>\n";
 				echo "<td>".$rowD[1]."</td>\n";
 				echo "<td>".$rowD[3]."</td>\n";
@@ -92,7 +100,7 @@ This will be a replacement for erwin85's delete tool.<br />
 </table>
 <br />
 <p>Acknowledgements to <a href="http://tools.wmflabs.org/erwin85/">erwin85</a> for the 
-original tool, and to <a href="http://tools.wmflabs.org/pathoschild-contrib/">Pathoschild</a> 
+original tool and many of the queries, and to <a href="http://tools.wmflabs.org/pathoschild-contrib/">Pathoschild</a> 
 for creating the extensive suite of tools that I used as an example.</p>
 </body>
 </html>

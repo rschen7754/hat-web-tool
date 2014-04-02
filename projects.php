@@ -62,7 +62,7 @@ This is a replacement for erwin85's projects tool. For special rights, see <a hr
 </table>
 <br />
 <p>Acknowledgements to <a href="http://tools.wmflabs.org/erwin85/">erwin85</a> for the 
-original tool, and to <a href="http://tools.wmflabs.org/pathoschild-contrib/">Pathoschild</a> 
+original tool and many of the queries, and to <a href="http://tools.wmflabs.org/pathoschild-contrib/">Pathoschild</a> 
 for creating the extensive suite of tools that I used as an example.</p>
 </body>
 </html>
