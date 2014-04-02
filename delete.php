@@ -15,7 +15,7 @@ This will be a replacement for erwin85's delete tool.
 
 <table id="projects" class="tablesorter">
 <thead>
-<tr><th>Wiki</th><th>sysop</th><th>bureaucrat</th><th>checkuser</th><th>oversight</th></tr>
+<tr><th>Wiki</th><th>Admins</th><th>Last action</th><th>Page name</th><th>Last author</th><th>Last revision</th><th>Edit summary</th></tr>
 </thead>
 <tbody>
 	<?php
@@ -66,6 +66,7 @@ This will be a replacement for erwin85's delete tool.
 		if ($row2[0] <= 0) {
 			echo "<tr><td><a href=\"" . $row[1] . "\">". $row[0] . "</a></td>";
 			echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/sysop\">".$row2[0]."</td>\n";
+			echo "<td></td>";
 			echo "<td><a href=\"" . $row[1]. "/wiki/Template:".$template."\">".$template."</td>\n";
 		}
 	}
