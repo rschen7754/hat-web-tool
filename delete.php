@@ -73,13 +73,13 @@ This will be a replacement for erwin85's delete tool.<br />
 		
 		$rows4 = mysql_num_rows($result4);
 		
-		for ($k = 0; $j < $rows4; ++$k)
+		for ($k = 0; $k < $rows4; ++$k)
 			{
 				$rowD = mysql_fetch_row($result4);
 				echo "<tr><td><a href=\"" . $row[1] . "\">". $row[0] . "</a></td>";
 				echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/sysop\">".$row2[0]."</td>\n";
 				echo "<td></td>";
-				echo "<td><a href=\"" . $row[1]. "/wiki/".$rowD."\">".$rowD."</td>\n";
+				echo "<td><a href=\"" . $row[1]. "/wiki/".$rowD[0]."\">".$rowD[0]."</td>\n";
 			}
 		}
 	}
