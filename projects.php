@@ -57,9 +57,25 @@ This will be a replacement for erwin85's projects tool.
 		
 		$rowB = mysql_fetch_row($result3);
 		
+		$query4 = "select count(*) from user_groups where ug_group='checkuser';";
+		$result4 = mysql_query($query4);
+	
+		if (!$result4) die ("Database access failed: " . mysql_error());
+		
+		$rowC = mysql_fetch_row($result4);
+		
+		$query5 = "select count(*) from user_groups where ug_group='oversight';";
+		$result5 = mysql_query($query5);
+	
+		if (!$result5) die ("Database access failed: " . mysql_error());
+		
+		$rowO = mysql_fetch_row($result5);
+		
 		echo "<tr><td><a href=\"" . $row[1] . "\">". $row[0] . "</a></td>";
-		echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/sysop\">".$rowA[0]."</tr>\n";
-		echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/bureaucrat\">".$rowB[0]."</tr>\n";
+		echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/sysop\">".$rowA[0]."</td>\n";
+		echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/bureaucrat\">".$rowB[0]."</td>\n";
+		echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/checkuser\">".$rowC[0]."</td>\n";
+		echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/oversight\">".$rowO[0]."</td></tr>\n";
 	}
 	?>
 
