@@ -39,7 +39,7 @@ Number of admins (maximum 10): <input type="text" name="number" /><br />
 	
 	if (isset($_POST['number'])) {
 		$temp = get_post('number');
-		if (is_numeric($admins)) {
+		if (is_numeric($temp)) {
 			$admins=$temp;
 		}
 	}	
