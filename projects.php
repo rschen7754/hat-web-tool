@@ -23,7 +23,7 @@ This will be a replacement for erwin85's projects tool.
 	<?php
 	require_once 'login.php';
 	$db_server = mysql_connect("metawiki.labsdb", $db_username, $db_password);
-	if (!db_server) die ("Unable to connect to MySQL: " . mysql_error());
+	if (!$db_server) die ("Unable to connect to MySQL: " . mysql_error());
 	
 	mysql_select_db("meta_p", $db_server) or die ("Unable to select database: " . mysql_error());
 
@@ -39,7 +39,7 @@ This will be a replacement for erwin85's projects tool.
 		$row = mysql_fetch_row($result);
 		
 		$db_server_temp = mysql_connect($row[2], $db_username, $db_password);
-		if (!db_server_temp) die ("Unable to connect to MySQL: " . mysql_error());
+		if (!$db_server_temp) die ("Unable to connect to MySQL: " . mysql_error());
 	
 		mysql_select_db($row[0]."_p", $db_server_temp) or die ("Unable to select database: " . mysql_error());
 
