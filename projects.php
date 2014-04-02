@@ -1,5 +1,6 @@
 <html>
 <head><title>Projects</title>
+	<style type="text/css">@import "blue/style.css";</style>
 <script type="text/javascript" src="jquery-latest.js"></script> 
 <script type="text/javascript" src="jquery.tablesorter.js"></script> 
 <script type="text/javascript">
