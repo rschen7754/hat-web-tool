@@ -79,10 +79,10 @@ This will be a replacement for erwin85's delete tool.<br />
 				echo "<tr><td><a href=\"" . $row[1] . "\">". $row[0] . "</a></td>";
 				echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/sysop\">".$row2[0]."</td>\n";
 				echo "<td></td>";
-				echo "<td><a href=\"" . $row[1]. "/wiki/".$rowD[0]."\">".$rowD[0]."</td>\n";
-				echo "<td><a href=\"" . $row[1]. "/wiki/".$rowD[0]."\">".$rowD[2]."</td>\n";
-				echo "<td></td>";
-				echo "<td><a href=\"" . $row[1]. "/wiki/".$rowD[0]."\">".$rowD[3]."</td>\n";
+				echo "<td><a href=\"" . $row[1]. "/wiki/".$rowD[0]."\">".$rowD[0]."</a></td>\n";
+				echo "<td><a href=\"" . $row[1]. "/wiki/User:".$rowD[2]."\">".$rowD[2]."</a></td>\n";
+				echo "<td>".$rowD[1]."</td>\n";
+				echo "<td>".$rowD[3]."</td>\n";
 			}
 		}
 	}
