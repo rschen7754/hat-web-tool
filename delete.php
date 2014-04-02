@@ -55,10 +55,10 @@ This will be a replacement for erwin85's delete tool.
 		
 		$template = "Delete";
 		
-		if (!$q) {
+		if (!$result3) {
             $template = "Delete";
-        } elseif (mysql_num_rows($q) == 1) {
-            $template = mysql_result($q, 0);
+        } elseif (mysql_num_rows($result3) == 1) {
+            $template = mysql_result($result3, 0);
         } else {
             $template = "Delete";
         }
