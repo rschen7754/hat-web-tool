@@ -1,5 +1,6 @@
 <html>
 <head><title>Delete</title></head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />	
 <style type="text/css">@import "blue/style.css";</style>
 <script type="text/javascript" src="jquery-latest.js"></script> 
 <script type="text/javascript" src="jquery.tablesorter.js"></script> 
@@ -88,7 +89,7 @@ This will be a replacement for erwin85's delete tool.<br />
 				echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/sysop\">".$row2[0]."</td>\n";
 				echo "<td></td>";
 				echo "<td><a href=\"" . $row[1]. "/wiki/Special:Diff/".titleLink($rowD[4])."\">".$rowD[0]."</a></td>\n";
-				echo "<td><a href=\"" . $row[1]. "/wiki/User:".$rowD[2]."\">".$rowD[2]."</a></td>\n";
+				echo "<td><a href=\"" . $row[1]. "/wiki/User:".titleLink($rowD[2])."\">".$rowD[2]."</a></td>\n";
 				echo "<td>".$rowD[1]."</td>\n";
 				echo "<td>".$rowD[3]."</td>\n";
 			}
