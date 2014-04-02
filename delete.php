@@ -22,7 +22,12 @@ function titleLink ($title)
 <body>
 This will be a replacement for erwin85's delete tool.<br />
 <h1>WARNING: this is a beta tool. You are responsible for your own deletions; please check before you delete!</h1>
-
+<p>You can sort by multiple columns by first sorting by one column, and then shift-clicking the second column.</p>
+<hr />
+<form action="delete.php" method="post">
+Number of admins (maximum 10): <input type="text" name="number" /><br />
+<input type="submit" />
+</form>
 <table id="projects" class="tablesorter">
 <thead>
 <tr><th>Wiki</th><th>Admins</th><th>Last admin action</th><th>Page name</th><th>Last author</th><th>Last revision</th><th>Edit summary</th></tr>
@@ -98,7 +103,7 @@ This will be a replacement for erwin85's delete tool.<br />
 				echo "<td><a href=\"" . $row[1]. "/wiki/Special:Diff/".titleLink($rowD[4])."\">".$rowD[0]."</a></td>\n";
 				echo "<td><a href=\"" . $row[1]. "/wiki/User:".titleLink($rowD[2])."\">".$rowD[2]."</a></td>\n";
 				echo "<td>".$rowD[1]."</td>\n";
-				echo "<td>".$rowD[3]."</td>\n";
+				echo "<td>".$rowD[3]."</td></tr>\n";
 			}
 		}
 	}
