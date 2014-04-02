@@ -52,7 +52,7 @@ This is a replacement for erwin85's projects tool. For special rights, see <a hr
 		$row2 = mysql_fetch_row($result2);
 		
 		echo "<tr><td><a href=\"" . $row[1] . "\">". $row[0] . "</a></td>";
-		echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/sysop\">".$row2[0]."</td>\n";
+		echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/sysop\">". ($row2[0]?$row2[0]:0)."</td>\n";
 		echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/bureaucrat\">".$row2[1]."</td>\n";
 		echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/checkuser\">".$row2[2]."</td>\n";
 		echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/oversight\">".$row2[3]."</td></tr>\n";
