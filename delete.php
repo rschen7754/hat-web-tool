@@ -80,6 +80,9 @@ This will be a replacement for erwin85's delete tool.<br />
 				echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/sysop\">".$row2[0]."</td>\n";
 				echo "<td></td>";
 				echo "<td><a href=\"" . $row[1]. "/wiki/".$rowD[0]."\">".$rowD[0]."</td>\n";
+				echo "<td><a href=\"" . $row[1]. "/wiki/".$rowD[0]."\">".$rowD[2]."</td>\n";
+				echo "<td></td>";
+				echo "<td><a href=\"" . $row[1]. "/wiki/".$rowD[0]."\">".$rowD[3]."</td>\n";
 			}
 		}
 	}
