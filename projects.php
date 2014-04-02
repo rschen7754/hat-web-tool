@@ -38,7 +38,7 @@ This will be a replacement for erwin85's projects tool.
 	for ($j = 0; $j < $rows; ++$j)
 	{
 		$row = mysql_fetch_row($result);
-		echo "<tr><td>" . $row[0] . "</td><tr>\n";
+		echo "<tr><td><a href=\"" . $row[1] . "\">". $row[0] . "</a></td></tr>\n";
 	}
 	?>
 
