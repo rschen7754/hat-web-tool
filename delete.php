@@ -21,7 +21,7 @@ function titleLink ($title)
 ?>
 <body>
 This will be a replacement for erwin85's delete tool.<br />
-<h1>WARNING: this is a beta tool. You are responsible for your own deletions; please check before you delete!</h1>
+<h2>WARNING: this is a beta tool. You are responsible for your own deletions; please check before you delete!</h2>
 <p>You can sort by multiple columns by first sorting by one column, and then shift-clicking the second column.</p>
 <hr />
 <form action="delete.php" method="post">
@@ -35,6 +35,17 @@ Number of admins (maximum 10): <input type="text" name="number" /><br />
 <tbody>
 	<?php
 	require_once 'login.php';
+	$admins = 0;
+	
+	if (isset($_POST['number'])) {
+		$temp = get_post('number');
+		if (is_numeric($admins)) {
+			$admins=$temp;
+		}
+	}	
+	if ($admins > 10) {
+			$admins=10;
+	}
 	$db_server = mysql_connect("metawiki.labsdb", $db_username, $db_password);
 	if (!$db_server) die ("Unable to connect to MySQL: " . mysql_error());
 	
@@ -63,7 +74,7 @@ Number of admins (maximum 10): <input type="text" name="number" /><br />
 		
 		$row2 = mysql_fetch_row($result2);
 		
-		if ($row2[0] <= 1) {
+		if ($row2[0] <= $admins) {
 		
 			$queryL = "SELECT user_name, log_timestamp FROM logging JOIN user ON user_id = log_user JOIN user_groups ON ug_user = user_id WHERE log_type IN ('delete', 'block', 'protect') AND ug_group = 'sysop' ORDER BY log_timestamp DESC LIMIT 1;";
 			$resultL = mysql_query($queryL);
