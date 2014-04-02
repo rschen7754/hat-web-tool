@@ -50,8 +50,16 @@ This will be a replacement for erwin85's projects tool.
 		
 		$rowA = mysql_fetch_row($result2);
 		
+		$query3 = "select count(*) from user_groups where ug_group='bureaucrat';";
+		$result3 = mysql_query($query3);
+	
+		if (!$result3) die ("Database access failed: " . mysql_error());
+		
+		$rowB = mysql_fetch_row($result3);
+		
 		echo "<tr><td><a href=\"" . $row[1] . "\">". $row[0] . "</a></td>";
 		echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/sysop\">".$rowA[0]."</tr>\n";
+		echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/bureaucrat\">".$rowB[0]."</tr>\n";
 	}
 	?>
 
