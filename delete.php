@@ -48,9 +48,25 @@ This will be a replacement for erwin85's delete tool.
 		
 		$row2 = mysql_fetch_row($result2);
 		
+		$query3 = "SELECT pl_title FROM pagelinks LEFT JOIN page ON page_id = pl_from WHERE page_title = 'Delete' AND page_namespace = 10 AND page_is_redirect = 1 LIMIT 1;";
+		$result3 = mysql_query($query3);
+	
+		if (!$result3) die ("Database access failed: " . mysql_error());
+		
+		$template = "Delete";
+		
+		if (!$q) {
+            $template = "Delete";
+        } elseif (mysql_num_rows($q) == 1) {
+            $template = mysql_result($q, 0);
+        } else {
+            $template = "Delete";
+        }
+		
 		if ($row2[0] <= 0) {
 			echo "<tr><td><a href=\"" . $row[1] . "\">". $row[0] . "</a></td>";
 			echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/sysop\">".$row2[0]."</td>\n";
+			echo "<td><a href=\"" . $row[1]. "/wiki/Template:".$template."\">".$template."</td>\n";
 		}
 	}
 	?>
