@@ -60,34 +60,41 @@ This will be a replacement for erwin85's delete tool.<br />
 		
 		if ($row2[0] <= 1) {
 		
-		$query3 = "SELECT pl_title FROM pagelinks LEFT JOIN page ON page_id = pl_from WHERE page_title = 'Delete' AND page_namespace = 10 AND page_is_redirect = 1 LIMIT 1;";
-		$result3 = mysql_query($query3);
+			$queryL = "SELECT user_name, log_timestamp FROM logging JOIN user ON user_id = log_user JOIN user_groups ON ug_user = user_id WHERE log_type IN ('delete', 'block', 'protect') AND ug_group = 'sysop' ORDER BY log_timestamp DESC LIMIT 1;";
+			$resultL = mysql_query($queryL);
 	
-		if (!$result3) die ("Database access failed: " . mysql_error());
+			if (!$resultL) die ("Database access failed: " . mysql_error());
 		
-		$template = "Delete";
+			$rowL = mysql_fetch_row($resultL);
 		
-		if (!$result3) {
-            $template = "Delete";
-        } elseif (mysql_num_rows($result3) == 1) {
-            $template = mysql_result($result3, 0);
-        } else {
-            $template = "Delete";
-        }
+			$query3 = "SELECT pl_title FROM pagelinks LEFT JOIN page ON page_id = pl_from WHERE page_title = 'Delete' AND page_namespace = 10 AND page_is_redirect = 1 LIMIT 1;";
+			$result3 = mysql_query($query3);
+	
+			if (!$result3) die ("Database access failed: " . mysql_error());
+		
+			$template = "Delete";
+		
+			if (!$result3) {
+       		     $template = "Delete";
+       		} elseif (mysql_num_rows($result3) == 1) {
+        	    $template = mysql_result($result3, 0);
+       		} else {
+          	  $template = "Delete";
+        	}
         
-        $query4 = "SELECT page_title, rev_timestamp, rev_user_text, rev_comment, rev_id FROM page LEFT JOIN templatelinks ON tl_from = page_id LEFT JOIN revision ON rev_page = page_id WHERE tl_title = '" . $template . "' AND tl_namespace=10 AND rev_timestamp = (SELECT max(rev_timestamp) FROM revision AS r WHERE rev_page = page_id)";
-		$result4 = mysql_query($query4);
+        	$query4 = "SELECT page_title, rev_timestamp, rev_user_text, rev_comment, rev_id FROM page LEFT JOIN templatelinks ON tl_from = page_id LEFT JOIN revision ON rev_page = page_id WHERE tl_title = '" . $template . "' AND tl_namespace=10 AND rev_timestamp = (SELECT max(rev_timestamp) FROM revision AS r WHERE rev_page = page_id)";
+			$result4 = mysql_query($query4);
 	
-		if (!$result4) die ("Database access failed: " . mysql_error());
+			if (!$result4) die ("Database access failed: " . mysql_error());
 		
-		$rows4 = mysql_num_rows($result4);
+			$rows4 = mysql_num_rows($result4);
 		
-		for ($k = 0; $k < $rows4; ++$k)
+			for ($k = 0; $k < $rows4; ++$k)
 			{
 				$rowD = mysql_fetch_row($result4);
 				echo "<tr><td><a href=\"" . $row[1] . "\">". $row[0] . "</a></td>";
 				echo "<td><a href=\"" . $row[1]. "/wiki/Special:ListUsers/sysop\">".$row2[0]."</td>\n";
-				echo "<td></td>";
+				echo "<td>".$rowL[1]."</td>\n";
 				echo "<td><a href=\"" . $row[1]. "/wiki/Special:Diff/".titleLink($rowD[4])."\">".$rowD[0]."</a></td>\n";
 				echo "<td><a href=\"" . $row[1]. "/wiki/User:".titleLink($rowD[2])."\">".$rowD[2]."</a></td>\n";
 				echo "<td>".$rowD[1]."</td>\n";
