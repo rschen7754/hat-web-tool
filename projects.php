@@ -28,13 +28,15 @@ This will be a replacement for erwin85's projects tool.
 
 	mysql_select_db("meta_p", $db_server) or die ("Unable to select database: " . mysql_error());
 
-
+	$query = "SELECT dbname,REPLACE(url, "http://", "") AS domain, slice FROM wiki WHERE url IS NOT NULL AND is_closed=0;";
+	$result = mysql_query($query);
 	?>
 
 </tbody>
 </table>
 <br />
-<p>Acknowledgements to erwin85 for the original tool, and to Pathoschild for creating the 
-extensive suite of tools that I used as an example.</p>
+<p>Acknowledgements to <a href="http://tools.wmflabs.org/erwin85/">erwin85</a> for the 
+original tool, and to <a href="http://tools.wmflabs.org/pathoschild-contrib/">Pathoschild</a> 
+for creating the extensive suite of tools that I used as an example.</p>
 </body>
 </html>
